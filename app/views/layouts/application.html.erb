@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>Takibi</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -11,6 +12,56 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <header class="shadow-sm mb-5" >
+        <nav class="navbar expand-lg navbar-dark" style="background-color: #ffdab9;">
+
+          <div class="container">
+
+            <% if user_signed_in? %>
+              <%= link_to root_path do %>
+                <%= image_tag "leavelogo.jpg", size: "100x100" %>
+              <% end %>
+              <!--サインイン中のヘッター内容-->
+              <ul class="nav justify-content-end">
+                <li class="nav-item btn"><%= link_to "マイページ", root_path, class: 'nav-link text-dark' %></li>
+                <li class="nav-item btn"><%= link_to "商品一覧", root_path, class: 'nav-link text-dark' %></li>
+                <li class="nav-item btn"><%= link_to "カート", root_path, class: 'nav-link text-dark' %></li>
+                <li class="nav-item btn"><%= link_to "ログアウト",  destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %></li>
+              </ul>
+
+            <% else %>
+              <%= link_to root_path do %>
+                <%= image_tag "leavelogo.jpg", size: "100x100" %>
+              <% end %>
+              <!--サインインしてない時のヘッター内容-->
+              <ul class="nav justify-content-end">
+                <li class="nav-item btn"><%= link_to "About", root_path, class: 'nav-link text-dark' %></li>
+                <li class="nav-item btn"><%= link_to "商品一覧", root_path, class: 'nav-link text-dark' %></li>
+                <li class="nav-item btn"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %></li>
+                <li class="nav-item btn"><%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %></li>
+              </ul>
+
+            <% end %>
+          </div>
+        </nav>
+    </header>
+
+        <%= yield %>
+
+    <footer class="text-dark pt-5 pb-3">
+        <div class='container'>
+    	    <div class='row'>
+      	    <div class='mx-auto'>
+                <a href="#" class="mx-1 text-dark"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" class="mx-5 text-dark"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#" class="mx-1 text-dark"><i class="fab fa-facebook-square"></i></a>
+                <a href="#" class="mx-5 text-dark"><i class="far fa-envelope fa-lg"></i></a>
+                <p class="text-center">からあげ</p>
+              </div>
+           </div>
+         </div>
+    </footer>
+
   </body>
 </html>
