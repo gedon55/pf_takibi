@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 2022_09_11_130142) do
     t.text "body"
     t.string "place"
     t.string "price"
-    t.datetime "day"
+    t.date "day"
+    t.integer "member"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

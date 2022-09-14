@@ -1,2 +1,42 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<div class='container'>
+<div class='row'>
+<div class='mx-auto'>
+
+  <h2>新規投稿</h2>
+
+  <%= form_with model: @post do |f| %>
+
+    <div class="field">
+    <%= f.label :日付 %><br/>
+    <%= f.date_field :day %>
+    </div>
+
+    <div class="field">
+    <%= f.label :キャンプ場 %><br/>
+    <%= f.text_field :place, autofocus: true, autocomplete: "place" %>
+    </div>
+
+    <div class="field">
+    <%= f.label :人数 %><br/>
+    <%= f.number_field :member, :value =>"1", in: 1..100 %>
+    </div>
+
+    <div class="field">
+    <%= f.label :値段（一人当たり） %><br/>
+    <p><%= f.text_field :price, :value =>"0", autofocus: true, autocomplete: "place" %>円</p>
+    </div>
+
+    <div class="field">
+    <%= f.label :感想 %><br/>
+    <%= f.text_area :body, autofocus: true, autocomplete: "body" %>
+    </div>
+
+    <!--上との間をあけるよう用の</br>-->
+    </br>
+    <%= f.submit "保存" %>
+
+  <% end %>
+
+</div>
+</div>
+</div>
