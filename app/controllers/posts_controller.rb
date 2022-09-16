@@ -6,10 +6,11 @@ class PostsController < ApplicationController
   def create
     post=Post.new(post_params)
     post.save
-    redirect_to '/'
+    redirect_to "/posts"
   end
 
   def index
+    @posts=Post.all
   end
 
   def show
@@ -21,6 +22,6 @@ class PostsController < ApplicationController
   private
   # ストロングパラメーター
   def post_params
-    params.require(:post).permit(:title, :body, :place, :day, :price, :member)
+    params.require(:post).permit(:title, :body, :place, :in_day, :out_day, :price, :member, :image)
   end
 end

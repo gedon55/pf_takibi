@@ -7,13 +7,23 @@
   <%= form_with model: @post do |f| %>
 
     <div class="field">
-    <%= f.label :日付 %><br/>
-    <%= f.date_field :day %>
+    <%= f.label :チェックイン日時 %><br/>
+    <%= f.datetime_field :in_day %>
+    </div>
+    
+    <div class="field">
+    <%= f.label :チェックアウト日時 %><br/>
+    <%= f.datetime_field :out_day %>
     </div>
 
     <div class="field">
     <%= f.label :キャンプ場 %><br/>
     <%= f.text_field :place, autofocus: true, autocomplete: "place" %>
+    </div>
+    
+    <div class="field">
+    <%= f.label :画像 %><br/>
+    <%= f.file_field :image, accept: "image/*" %>
     </div>
 
     <div class="field">
