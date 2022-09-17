@@ -1,2 +1,52 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<div class='container'>
+<div class='row'>
+<div class='mx-auto'>
+  
+  <h2>編集画面</h2>
+  
+  <%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
+  
+    <div class="field">
+    <%= f.label :チェックイン日時 %><br/>
+    <%= f.datetime_field :in_day %>
+    </div>
+    
+    <div class="field">
+    <%= f.label :チェックアウト日時 %><br/>
+    <%= f.datetime_field :out_day %>
+    </div>
+
+    <div class="field">
+    <%= f.label :キャンプ場 %><br/>
+    <%= f.text_field :place, autofocus: true, autocomplete: "place" %>
+    </div>
+    
+    <div class="field">
+    <%= f.label :画像 %><br/>
+    <%= f.file_field :image, accept: "image/*" %>
+    </div>
+
+    <div class="field">
+    <%= f.label :人数 %><br/>
+    <%= f.number_field :member, in: 1..100 %>
+    </div>
+
+    <div class="field">
+    <%= f.label :値段（一人当たり） %><br/>
+    <p><%= f.text_field :price, autofocus: true, autocomplete: "place" %>円</p>
+    </div>
+
+    <div class="field">
+    <%= f.label :感想 %><br/>
+    <%= f.text_area :body, autofocus: true, autocomplete: "body" %>
+    </div>
+
+    <!--上との間をあけるよう用の</br>-->
+    </br>
+    <%= f.submit "保存" %>
+    
+  <% end %>
+  
+</div>
+</div>
+</div>

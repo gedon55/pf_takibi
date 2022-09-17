@@ -1,2 +1,33 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class='container'>
+<div class='row'>
+<div class='mx-auto'>
+  
+  <span>チェックイン日時</span></br>
+  <%= @post.in_day %></br></br>
+  
+  <span>チェックアウト日時</span></br>
+  <%= @post.out_day %></br></br>
+  
+  <span>キャンプ場</span></br>
+    <% if @post.image.attached? %>
+      <%= image_tag @post.image, size: "200x200" %>
+    <% else %>
+      <%= image_tag 'no_image', size: "200x200" %>
+    <% end %></br>
+  <%= @post.place %></br></br>
+  
+  <span>人数</span></br>
+  <%= @post.member %>人</br></br>
+  
+  <span>値段（一人当たり）</span></br>
+  <%= @post.price %>円</br></br>
+  
+  <span>感想</span></br>
+  <%= @post.body %></br></br>
+  
+  <%= link_to "編集", edit_post_path(@post.id) %></br>
+  <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  
+</div>
+</div>
+</div>

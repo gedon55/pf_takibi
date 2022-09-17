@@ -7,8 +7,8 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.text :body
       t.string :place
       t.string :price
-      t.date :in_day
-      t.date :out_day
+      t.datetime :in_day
+      t.datetime :out_day
       t.integer :member
 
       t.timestamps

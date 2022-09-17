@@ -1,15 +1,25 @@
 <div class='container'>
 <div class='row'>
 <div class='mx-auto'>
+  
+  <%= render 'search', posts: @posts %></br>
 
-  <h2>保存一覧</h2>
+  <h2><i class="fas fa-campfire"></i>キャンプ場記録</h2>
+  
+  
 
   <% @posts.each do |post| %>
-
-    <p>日付</p>
-    <%= post.in_day %>
-    <%= post.out_day %>
-    <%= post.body %>
+  
+    <span>キャンプ場</span></br>
+    
+    <% if post.image.attached? %>
+      <%= image_tag post.image, size: "200x200" %>
+    <% else %>
+      <%= image_tag 'no_image', size: "200x200" %>
+    <% end %>
+    
+    </br>
+    <%= link_to post.place, post_path(post.id)%></br></br>
 
   <% end %>
 
