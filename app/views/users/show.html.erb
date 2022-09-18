@@ -1,14 +1,22 @@
+<!--<div>-->
+  <!--<h3><%= @user.nickname %></h3>-->
+<!--</div>-->
+
+<!-- ユーザーの投稿一覧 -->
+
 <div class='container'>
 <div class='row'>
 <div class='mx-auto'>
   
-  <!--%= render 'search', posts: @posts %></br>-->
+  <p>ニックネーム</br>「<%= @user.nickname %>」</p>
+  
+  <%= render 'posts/search', posts: @posts %></br>
 
   <h2><i class="fab fa-campfire"></i>キャンプ場記録</h2>
   
   
 
-  <% @posts.each do |post| %>
+  <% @post.each do |post| %>
   
     <span>キャンプ場</span></br>
     

@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2022_09_15_143517) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "users_id"
+    t.integer "user_id"
     t.string "title"
     t.text "body"
     t.string "place"

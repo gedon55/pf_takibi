@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.users_id = current_user.id
+    @post.user_id = current_user.id
     if @post.save
       redirect_to post_path(@post.id)
     else
@@ -15,6 +15,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    # @user = User.find(params[:id])
+    # @post = Post.find(params[:id])
+    # @posts = @post.posts
   end
 
   def show
@@ -48,6 +51,6 @@ class PostsController < ApplicationController
   private
   # ストロングパラメーター
   def post_params
-    params.require(:post).permit(:title, :body, :place, :in_day, :out_day, :price, :member, :image, :users_id)
+    params.require(:post).permit(:title, :body, :place, :in_day, :out_day, :price, :member, :image, :user_id)
   end
 end
