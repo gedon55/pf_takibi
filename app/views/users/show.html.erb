@@ -7,25 +7,27 @@
 <div class='container'>
 <div class='row'>
 <div class='mx-auto'>
-  
+
   <p>ニックネーム</br>「<%= @user.nickname %>」</p>
-  
+  <div><%=link_to "グループを作成する",new_group_path %></br>
+  <%=link_to "グループ一覧",groups_path %></div>
+
   <%= render 'posts/search', posts: @posts %></br>
 
   <h2><i class="fab fa-campfire"></i>キャンプ場記録</h2>
-  
-  
+
+
 
   <% @post.each do |post| %>
-  
+
     <span>キャンプ場</span></br>
-    
+
     <% if post.image.attached? %>
       <%= image_tag post.image, size: "200x200" %>
     <% else %>
       <%= image_tag 'no_image', size: "200x200" %>
     <% end %>
-    
+
     </br>
     <%= link_to post.place, post_path(post.id)%></br></br>
 

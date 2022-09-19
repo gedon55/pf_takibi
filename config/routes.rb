@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-
-  get 'users/show'
-  get 'users/edit'
+  devise_for :users
   root :to =>"homes#top"
   get 'homes/about'
-  devise_for :users
+  
+  resources :groups, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
+    get "join" => "groups#join"
+  end
   
   resources :users, only: [:show, :edit, :update] 
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
