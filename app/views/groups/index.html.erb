@@ -4,9 +4,11 @@
         <thead>
           <tr>
             <th></th>
+            <th>作成者</th>
             <th>グループ名</th>
             <th>紹介文</th>
-            <th colspan="3"></th>
+            <th>人数</th>
+            <th colspan="5"></th>
           </tr>
         </thead>
         <tbody>
@@ -18,6 +20,10 @@
               <% else %>
                 <%= image_tag 'no_image', size: "200x200" %>
                <% end %>
+              </td>
+              <td>
+              <%= group.user ? group.user.nickname : "不明" %>が
+                <i class="far fa-clock"><%= group.created_at.strftime("%Y/%m/%d") %>に作成</i>
               </td>
               <td><%= link_to group.name, group_path(group) %></td>
               <td><%= group.introduction %></td>
