@@ -1,0 +1,22 @@
+<div class='container'>
+<div class='row'>
+<div class='mx-auto'>
+
+<table>
+  <thead>
+    <tr>
+    <th>検索グループ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+      <td><%= link_to group.name, group_path(group.id)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
