@@ -10,6 +10,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.datetime :in_day
       t.datetime :out_day
       t.integer :member
+      t.boolean :is_published_flag
 
       t.timestamps
     end

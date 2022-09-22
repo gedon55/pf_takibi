@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :groups, dependent: :destroy, through: :group_users
   has_many :owned_groups, class_name: "Group"
+  
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :nickname, presence: true
 end

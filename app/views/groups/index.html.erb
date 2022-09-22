@@ -1,4 +1,5 @@
   <div class='col-md-8 offset-md-1'>
+  グループ名検索
   <%= form_with url: search_groups_path, method: :get, local: true do |f| %>
   <%= f.text_field :name %>
   <%= f.submit :検索 %>
@@ -11,8 +12,9 @@
             <th>作成者</th>
             <th>グループ名</th>
             <th>紹介文</th>
+            <th>参加条件</th>
             <th>人数</th>
-            <th colspan="5"></th>
+            <th colspan="6"></th>
           </tr>
         </thead>
         <tbody>
@@ -31,11 +33,16 @@
               </td>
               <td><%= link_to group.name, group_path(group) %></td>
               <td><%= group.introduction %></td>
+              <td><%= group.status %></td>
               <td><%= group.users.count %></td>
               <td>
                 <% if group.owner_id == current_user.id %>
-                  <%= link_to 'Edit', edit_group_path(group), class: "btn btn-sm btn-success" %>
-                <% end %>
+              　<%= link_to 'Edit', edit_group_path(group), class: "btn btn-sm btn-success" %>
+            　　<% elsif group.users.include?(current_user) %>
+              　<%= link_to 'Leave this group', group_path(group), method: :delete, class: "btn btn-sm btn-danger" %>
+            　　<% else %>
+             　 <%= link_to 'Join this group', group_join_path(group), class: "btn btn-sm btn-success" %>
+           　　 <% end %>
               </td>
             </tr>
           <% end %>

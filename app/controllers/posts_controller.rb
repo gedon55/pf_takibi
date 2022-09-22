@@ -14,7 +14,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    # @posts = Post.all
+    @posts = Post.published
     # @user = User.find(params[:id])
     # @post = Post.find(params[:id])
     # @posts = @post.posts
@@ -51,6 +52,6 @@ class PostsController < ApplicationController
   private
   # ストロングパラメーター
   def post_params
-    params.require(:post).permit(:title, :body, :place, :in_day, :out_day, :price, :member, :image, :user_id)
+    params.require(:post).permit(:title, :body, :place, :in_day, :out_day, :price, :member, :image, :user_id, :is_published_flag)
   end
 end
