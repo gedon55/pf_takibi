@@ -14,7 +14,7 @@ class Post < ApplicationRecord
   validates :member, presence: true
   validates :price, presence: true, numericality: {only_integer: true}
   validates :body, presence: true
-  validates :is_published_flag, presence: true
+  # validates :is_published_flag, presence: true
 
 
 end

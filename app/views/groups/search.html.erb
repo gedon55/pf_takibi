@@ -1,20 +1,77 @@
-<div class='container'>
-<div class='row'>
-<div class='mx-auto'>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-8 offset-md-1'>
+      再検索
+      <%= form_with url: search_groups_path, method: :get, local: true do |f| %>
+      <%= f.text_field :name %>
+      <%= f.submit :検索 %>
+      <% end %></br>
+      
+      <h4>検索結果</h4>
+      <table class='table table-hover table-inverse'>
 
-<table>
   <thead>
     <tr>
-    <th>検索グループ</th>
+    <th>作成者</th>
+    <th>グループ名</th>
+    <th></th>
+    <th></th>
     </tr>
   </thead>
+
   <tbody>
     <% @groups.each do |group| %>
       <tr>
+      <td><%= group.user ? group.user.nickname : "不明" %></td>
       <td><%= link_to group.name, group_path(group.id)%></td>
+
+
+      <td>
+      <% if group.owner_id == current_user.id %>
+        
+
+      <% elsif group.users.include?(current_user) %>
+      
+        <% if group.group_user(current_user).status == "panding" %>
+          申請中
+          <%= link_to '申請取り消し', group_path(group), method: :delete, class: "btn btn-sm btn-danger" %>
+        <% elsif group.group_user(current_user).status == "participating" %>
+          参加中
+          <%= link_to '退会', group_path(group), method: :delete, class: "btn btn-sm btn-danger" %>
+        <% elsif group.group_user(current_user).status == "rejecting" %>
+          参加失敗
+        <% end %>
+
+      <% else %>
+        <%= link_to '参加申請', group_join_path(group), class: "btn btn-sm btn-success" %>
+
+      <% end %>
+      </td>
+      <td>
+      <% if group.owner_id == current_user.id %>
+        <% group.group_users.each do |group_user| %>
+          <%= group_user.user.nickname %>
+          <% if group_user.status == "panding" %>
+            <%= form_with model: group_user do |f| %>
+              <%= f.radio_button :status, :participating %>
+              <%= f.label :status, "許可", value: :participating %>
+              <%= f.radio_button :status, :rejecting %>
+              <%= f.label :status, "拒否", value: :rejecting %>
+              <%= f.submit "送信" %>
+            <% end %>
+          <% elsif group_user.status == "participating" %>
+            参加中
+          <% elsif group_user.status == "rejecting" %>
+            拒否
+          <% end %>
+          </br>
+        <% end %>
+      <% end %>
+      </td>
       </tr>
     <% end %>
   </tbody>
+
 </table>
 
 </div>

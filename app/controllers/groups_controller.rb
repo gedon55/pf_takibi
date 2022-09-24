@@ -14,6 +14,10 @@ class GroupsController < ApplicationController
   def show
     @post = Post.new
     @group = Group.find(params[:id])
+    # ↓グループに参加していないとshowにいけない
+    unless @group.group_user(current_user).status == "participating"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def join

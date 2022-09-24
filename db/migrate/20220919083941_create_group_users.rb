@@ -4,7 +4,7 @@ class CreateGroupUsers < ActiveRecord::Migration[6.1]
       
       t.references :user, foreign_key: true
       t.references :group, foreign_key: true
-      t.string :status
+      t.integer :status, default: 0
 
       t.timestamps
     end

@@ -8,8 +8,11 @@ Rails.application.routes.draw do
     get "join" => "groups#join"
       delete "all_destroy" => "groups#all_destroy"
   end
+  
+  resources :group_users, only:[:update]
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] 
+  
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       get :search, on: :collection
   end
