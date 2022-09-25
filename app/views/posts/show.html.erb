@@ -1,7 +1,7 @@
 <div class='container-fluid'>
 <div class='row'>
 <div class='col-2'>
-  
+
   <span>投稿者（ニックネーム）</span></br>
   <%= @post.user.nickname %></br></br>
 
@@ -16,22 +16,22 @@
 
   <span>値段（一人当たり）</span></br>
   <%= @post.price %>円</br></br>
-  
+
 </div>
 
 <div class='col-8'>
-  
+
   <span>キャンプ場</span></br>
-  
+
     <% if @post.images.attached? %>
       <% @post.images.each do |image| %>
         <%= image_tag image, size: "200x200" %>
       <% end %>
     <% else %>
-      <%= image_tag 'no_image', size: "200x200" %>
+      <%= image_tag 'leavelogo', size: "200x200" %>
     <% end %></br>
   <%= @post.place %></br></br>
-  
+
    <span>感想</span></br>
   <%= @post.body %></br></br>
 
@@ -39,8 +39,8 @@
   <%= link_to "編集", edit_post_path(@post.id) %></br>
   <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
   <% end %>
-  
-  
+
+
 </div>
 </div>
 </div>

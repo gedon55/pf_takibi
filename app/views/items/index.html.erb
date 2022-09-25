@@ -33,7 +33,7 @@
    <% if item.image.attached? %>
       <%= image_tag item.image, size: "200x200" %>
     <% else %>
-      <%= image_tag 'no_image', size: "200x200" %>
+      <%= image_tag 'leavelogo', size: "200x200" %>
     <% end %>
     </br>
     <%= link_to item.item_name, item_path(item.id) %>
