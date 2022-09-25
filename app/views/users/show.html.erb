@@ -1,31 +1,33 @@
 
-<div class='container'>
+<div class='container-fluid'>
 <div class='row'>
-<div class='mx-auto'>
+<div class='col'>
 
   <p>ニックネーム</br>「<%= @user.nickname %>」</p>
   <div><%=link_to "グループを作成する",new_group_path %></br>
   <%=link_to "グループ一覧",groups_path %></div>
 
-  <%= render 'posts/search', posts: @posts %></br>
+  <%= form_with url: user_path(@user), method: :get, local: true do |f| %>
+    <%= f.text_field :place %>
+    <%= f.submit :検索 %>
+  <% end %></br>
 
   <h2><i class="fab fa-campfire"></i>キャンプ場記録</h2>
 
-
+  <div class='row'>
 
   <% @post.each do |post| %>
-
-    <span>キャンプ場</span></br>
-
-    <% if post.image.attached? %>
-      <%= image_tag post.image, size: "200x200" %>
+   <div class="col-md-2">
+    
+    <% if post.images.attached? %>
+      <%= image_tag post.images.first, size: "200x200" %>
     <% else %>
       <%= image_tag 'no_image', size: "200x200" %>
     <% end %>
 
     </br>
     <%= link_to post.place, post_path(post.id)%></br></br>
-
+   </div>
   <% end %>
 
 </div>

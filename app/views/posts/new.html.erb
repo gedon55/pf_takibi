@@ -1,6 +1,6 @@
-<div class='container'>
+<div class='container-fluid'>
 <div class='row'>
-<div class='mx-auto'>
+<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   
   <% if @post.errors.any? %>
   <%= @post.errors.count %>件のエラーが発生しました
@@ -33,7 +33,8 @@
     
     <div class="field">
     <%= f.label :画像 %><br/>
-    <%= f.file_field :image, accept: "image/*" %>
+    <!--↓multipleにより複数枚送信-->
+    <%= f.file_field :images, accept: "image/*", multiple: true %>
     </div>
 
     <div class="field">
@@ -48,7 +49,7 @@
 
     <div class="field">
     <%= f.label :感想 %><br/>
-    <%= f.text_area :body, autofocus: true, autocomplete: "body" %>
+    <%= f.text_area :body, class: 'form-control', autofocus: true, autocomplete: "body" %>
     </div>
     
     <div>

@@ -25,7 +25,7 @@
           <td><%= @group.introduction %></td>
           <td>
           <% @group.users.each do |member| %>
-            <%= link_to member.nickname, user_path(current_user.id) %><br>
+            <%= link_to member.nickname, user_path(member.id) %><br>
           <% end %>
           </td>
           <td>

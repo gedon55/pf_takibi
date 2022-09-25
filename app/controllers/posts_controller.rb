@@ -14,11 +14,12 @@ class PostsController < ApplicationController
   end
 
   def index
-    # @posts = Post.all
-    @posts = Post.published
-    # @user = User.find(params[:id])
-    # @post = Post.find(params[:id])
-    # @posts = @post.posts
+    if params[:place].present?
+      @posts = Post.published.where('place LIKE ?', "%#{params[:place]}%")
+    else
+      @posts = Post.published
+    end
+
   end
 
   def show
@@ -28,30 +29,22 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
   end
-  
+
   def update
     post = Post.find(params[:id])
     post.update(post_params)
-    redirect_to post_path(post.id)  
+    redirect_to post_path(post.id)
   end
-  
+
   def destroy
     post = Post.find(params[:id])
     post.destroy
     redirect_to '/posts'
   end
-  
-  def search
-    if params[:place].present?
-      @posts = Post.where('place LIKE ?', "%#{params[:place]}%")
-    else
-      @posts = Post.none
-    end
-  end
 
   private
   # ストロングパラメーター
   def post_params
-    params.require(:post).permit(:title, :body, :place, :in_day, :out_day, :price, :member, :image, :user_id, :is_published_flag)
+    params.require(:post).permit(:title, :body, :place, :in_day, :out_day, :price, :member, :user_id, :is_published_flag, images: [])
   end
 end

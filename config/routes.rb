@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get 'homes/about'
 
   resources :groups, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
-    get :search, on: :collection
     get "join" => "groups#join"
       delete "all_destroy" => "groups#all_destroy"
   end
@@ -13,9 +12,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update] 
   
-  resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
-      get :search, on: :collection
-  end
+  resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] 
+  
+  resources :items, only: [:create, :index, :show, :destroy]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

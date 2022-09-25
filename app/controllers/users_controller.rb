@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @post = @user.posts #ユーザーに関連付けられた投稿すべて取得して@postsに
+    # @post = @user.posts #ユーザーに関連付けられた投稿すべて取得して@postsに
+    if params[:place].present?
+      @post = @user.posts.where('place LIKE ?', "%#{params[:place]}%")
+    else 
+      @post = @user.posts
+    end
   end
 
   def edit

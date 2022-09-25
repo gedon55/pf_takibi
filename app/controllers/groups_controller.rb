@@ -8,16 +8,20 @@ class GroupsController < ApplicationController
 
   def index
     @post = Post.new
-    @group = Group.all
+    
+    if params[:name].present?
+      @groups = Group.where('name LIKE ?', "%#{params[:name]}%")
+    else
+      @groups = Group.all
+    end
   end
 
   def show
     @post = Post.new
     @group = Group.find(params[:id])
-    # ↓グループに参加していないとshowにいけない
-    unless @group.group_user(current_user).status == "participating"
-      redirect_back(fallback_location: root_path)
-    end
+    # ↓GroupUserレコードが存在しない場合には元のページに戻す and return：一個一個返す１９行目までいかない
+    redirect_back(fallback_location: root_path) and return if @group.group_user(current_user).blank?
+    redirect_back(fallback_location: root_path) if @group.group_user(current_user).status != "participating"
   end
 
   def join

@@ -1,6 +1,8 @@
   <div class='col-md-8 offset-md-1'>
+  <div><%=link_to "グループを作成する",new_group_path %> |
+  <%=link_to "グループ一覧",groups_path %></div>
   グループ名検索
-  <%= form_with url: search_groups_path, method: :get, local: true do |f| %>
+  <%= form_with url: groups_path, method: :get, local: true do |f| %>
   <%= f.text_field :name %>
   <%= f.submit :検索 %>
   <% end %>
@@ -18,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @group.each do |group| %>
+          <% @groups.each do |group| %>
             <tr>
               <!--グループ写真-->
               <td>

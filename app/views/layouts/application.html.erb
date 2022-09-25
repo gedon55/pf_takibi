@@ -14,20 +14,19 @@
   <body>
 
     <header class="shadow-sm mb-5" >
-        <nav class="navbar expand-lg navbar-dark" style="background-color: #ffdab9;">
-
+        <nav class="navbar expand-lg navbar-dark" style="background-color: #f0f8ff;">
           <div class="container">
 
             <% if user_signed_in? %>
               <%= link_to root_path do %>
-                <%= image_tag "leavelogo.jpg", size: "100x100" %>
+                <%= image_tag "sun.png", size: "100x100" %>
               <% end %>
               <!--サインイン中のヘッター内容-->
-              <!--後でやりたい<p>ニックネーム</br>「%= @user.nickname %>」</p>-->
               <ul class="nav justify-content-end">
                 <li class="nav-item btn"><%= link_to "みんなの記録", posts_path, class: 'nav-link text-dark' %></li>
                 <li class="nav-item btn"><%= link_to "新規記録", new_post_path, class: 'nav-link text-dark' %></li>
                 <li class="nav-item btn"><%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-dark' %></li>
+                <li class="nav-item btn"><%= link_to "自分の道具", items_path(current_user.id), class: 'nav-link text-dark' %></li>
                 <li class="nav-item btn"><%= link_to "ログアウト",  destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %></li>
               </ul>
 
@@ -51,17 +50,18 @@
         <%= yield %>
 
     <footer class="text-dark pt-5 pb-3">
+      <div style="background-color: #32cd32;">
         <div class='container'>
     	    <div class='row'>
-      	    <div class='mx-auto'>
-                <a href="#" class="mx-1 text-dark"><i class="fab fa-twitter fa-lg"></i></a>
-                <a href="#" class="mx-5 text-dark"><i class="fab fa-instagram fa-lg"></i></a>
-                <a href="#" class="mx-1 text-dark"><i class="fab fa-facebook-square"></i></a>
-                <a href="#" class="mx-5 text-dark"><i class="far fa-envelope fa-lg"></i></a>
-                <p class="text-center">からあげ</p>
+    	      <i class="fas fa-campground"></i>
+    	      <p class="text-right"><i class="fas fa-campground"></i></p><i class="fas fa-walking"></i><i class="fas fa-campground"></i>
+      	    <div class='col'>
+      	      <i class="fas fa-campground"></i>
+                <p class="text-center"><i class="fas fa-walking"></i>@LEAVE<i class="fas fa-campground"></i></i></p>
               </div>
            </div>
          </div>
+        </div>
     </footer>
 
   </body>
