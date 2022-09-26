@@ -1,6 +1,16 @@
 <div class='container-fluid'>
 <div class='row'>
 <div class='col-2'>
+  
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  
+  <ul>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 投稿フォーム
   <%= form_with model: @item do |f| %>
@@ -25,7 +35,7 @@
 
 
 <div class='col-10'>
-  <h4>自分のアイテム</h4>
+  <h4>マイギア</h4>
   <div class='row'>
     
   <% @items.each do |item| %>

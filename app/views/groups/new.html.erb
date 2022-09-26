@@ -1,6 +1,14 @@
 <div class='container-fluid'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <% if @group.errors.any? %>
+        <%= @group.errors.count %>件のエラーが発生しました
+        <ul>
+        <% @group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      <% end %>
+
       <h3>Create Group</h3>
         <%= render 'form', group: @group %>
     </div>

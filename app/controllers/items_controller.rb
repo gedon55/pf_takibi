@@ -12,7 +12,9 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to items_path
     else
-      render :index
+      @user = current_user
+      @items = current_user.items
+      render "index"
     end
   end
   

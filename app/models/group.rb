@@ -5,7 +5,7 @@ class Group < ApplicationRecord
 
   belongs_to :user
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :introduction, presence: true
   validates :status, presence: true
   # attachment :image, destroy: false

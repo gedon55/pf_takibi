@@ -5,7 +5,8 @@
 
   <p>ニックネーム</br>「<%= @user.nickname %>」</p>
   <div><%=link_to "グループを作成する",new_group_path %></br>
-  <%=link_to "グループ一覧",groups_path %></div>
+  <%=link_to "グループ一覧",groups_path %></br>
+  <%=link_to "気になるキャンプ場",favorites_index_path %></div>
 
   <%= form_with url: user_path(@user), method: :get, local: true do |f| %>
     <%= f.text_field :place %>
