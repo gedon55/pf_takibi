@@ -32,22 +32,22 @@
 
             <% else %>
               <div style="background-color: #191970;">
-              <%= link_to root_path do %>
-                <%= image_tag "tuki2.png", size: "100x100" %>
-              <% end %>
-              <!--サインインしてない時のヘッター内容-->
-              <ul class="nav justify-content-end">
-                <li class="nav-item btn"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-yield' %></li>
-                <li class="nav-item btn"><%= link_to "ログイン", new_user_session_path, class: 'nav-link text-yield' %></li>
-                <li class="nav-item btn"><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: 'nav-link text-yield' %></li>
-              </ul>
+                <%= link_to root_path do %>
+                  <%= image_tag "tuki2.png", size: "100x100" %>
+                <% end %>
+                <!--サインインしてない時のヘッター内容-->
+                <ul class="nav justify-content-end">
+                  <li class="nav-item btn"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-yield' %></li>
+                  <li class="nav-item btn"><%= link_to "ログイン", new_user_session_path, class: 'nav-link text-yield' %></li>
+                  <li class="nav-item btn"><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: 'nav-link text-yield' %></li>
+                </ul>
 
             <% end %>
-          </div>
+              </div>
         </nav>
     </header>
 
-        <%= yield %>
+    <%= yield %>
 
     <footer class="text-dark pt-5 pb-3">
       <div style="background-color: #32cd32;">
@@ -55,13 +55,13 @@
     	    <div class='row'>
     	      <i class="fas fa-campground"></i>
     	      <p class="text-right"><i class="fas fa-campground"></i></p><i class="fas fa-walking"></i><i class="fas fa-campground"></i>
-      	    <div class='col'>
-      	      <i class="fas fa-campground"></i>
+      	      <div class='col'>
+      	        <i class="fas fa-campground"></i>
                 <p class="text-center"><i class="fas fa-walking"></i>@LEAVE<i class="fas fa-campground"></i></i></p>
               </div>
-           </div>
-         </div>
+          </div>
         </div>
+      </div>
     </footer>
 
   </body>
