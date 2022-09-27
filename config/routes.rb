@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :update]
 
-  get "favorites" => "fovorites#index"
+  get "favorites" => "favorites#index"
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
   end
