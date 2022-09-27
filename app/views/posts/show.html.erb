@@ -40,7 +40,7 @@
         <%= image_tag image, size: "200x200" %>
       <% end %>
     <% else %>
-      <%= image_tag 'leavelogo', size: "200x200" %>
+      <%= image_tag 'leavelogo.jpg', size: "200x200" %>
     <% end %></br>
   <%= @post.place %></br></br>
 
@@ -48,8 +48,8 @@
   <%= @post.body %></br></br>
 
   <% if @post.user.id == current_user.id %>
-  <%= link_to "編集", edit_post_path(@post.id) %></br>
-  <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    <%= link_to "編集", edit_post_path(@post.id) %></br>
+    <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
   <% end %>
 
 
