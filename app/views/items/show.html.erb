@@ -1,21 +1,22 @@
 <div class='container-fluid'>
-<div class='row'>
-<div class='mx-auto'>
+  <div class='row'>
+    <div class='mx-auto'>
 
-    <% if @item.image.attached? %>
-      <%= image_tag @item.image, size: "400x400" %>
-    <% else %>
-      <%= image_tag 'leavelogo', size: "200x200" %>
-    <% end %>
-    </br>
-    <h4><%= @item.item_name %></h4></br></br>
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "400x400" %>
+      <% else %>
+        <%= image_tag "leavelogo.jpg", size: "200x200" %>
+      <% end %>
+      </br>
+      <h4><%= @item.item_name %></h4>
+      </br></br>
 
-  <% if @item.user.id == current_user.id %>
-  <%= link_to "削除", item_path(@item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-  <% end %>
+      <% if @item.user.id == current_user.id %>
+        <%= link_to "削除", item_path(@item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <% end %>
 
 
-</div>
-</div>
+    </div>
+  </div>
 </div>
 

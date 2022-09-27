@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'favorites/index'
+  
   devise_for :users
   root :to =>"homes#top"
-  get 'homes/about'
   
   # ゲストログイン機能
   devise_scope :user do
@@ -16,7 +15,7 @@ Rails.application.routes.draw do
   
   resources :group_users, only:[:update]
 
-  resources :users, only: [:show, :edit, :update] 
+  resources :users, only: [:show, :update] 
   
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy, :index]

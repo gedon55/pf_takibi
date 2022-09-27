@@ -3,8 +3,8 @@
   <%=link_to "グループ一覧",groups_path %></div>
   グループ名検索
   <%= form_with url: groups_path, method: :get, local: true do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit :検索 %>
+    <%= f.text_field :name %>
+    <%= f.submit :検索 %>
   <% end %>
     <h2>Groups</h2>
       <table class='table table-hover table-inverse'>
@@ -27,7 +27,7 @@
               <% if group.image.attached? %>
                 <%= image_tag group.image, size: "200x200" %>
               <% else %>
-                <%= image_tag 'leavelogo', size: "200x200" %>
+                <%= image_tag "leavelogo.jpg", size: "200x200" %>
               <% end %>
               </td>
               <!--作成者表示-->

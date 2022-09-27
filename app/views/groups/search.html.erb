@@ -3,8 +3,8 @@
     <div class='col-md-8 offset-md-1'>
       再検索
       <%= form_with url: search_groups_path, method: :get, local: true do |f| %>
-      <%= f.text_field :name %>
-      <%= f.submit :検索 %>
+        <%= f.text_field :name %>
+        <%= f.submit :検索 %>
       <% end %></br>
       
       <h4>検索結果</h4>

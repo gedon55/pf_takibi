@@ -1,71 +1,71 @@
 <div class='container-fluid'>
-<div class='row'>
-<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   
-  <% if @post.errors.any? %>
-  <%= @post.errors.count %>件のエラーが発生しました
+      <% if @post.errors.any? %>
+      <%= @post.errors.count %>件のエラーが発生しました
   
-  <ul>
-    <% @post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-  <% end %>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+      <% end %>
 
-  <h2>新規投稿</h2>
+      <h2>新規投稿</h2>
 
-  <%= form_with model: @post do |f| %>
+      <%= form_with model: @post do |f| %>
 
-    <div class="field">
-    <%= f.label :チェックイン日時 %><br/>
-    <%= f.datetime_field :in_day %>
-    </div>
+        <div class="field">
+          <%= f.label :チェックイン日時 %><br/>
+          <%= f.datetime_field :in_day %>
+        </div>
     
-    <div class="field">
-    <%= f.label :チェックアウト日時 %><br/>
-    <%= f.datetime_field :out_day %>
-    </div>
+        <div class="field">
+          <%= f.label :チェックアウト日時 %><br/>
+          <%= f.datetime_field :out_day %>
+        </div>
 
-    <div class="field">
-    <%= f.label :キャンプ場 %><br/>
-    <%= f.text_field :place, autofocus: true, autocomplete: "place" %>
-    </div>
+        <div class="field">
+          <%= f.label :キャンプ場 %><br/>
+          <%= f.text_field :place, autofocus: true, autocomplete: "place" %>
+        </div>
     
-    <div class="field">
-    <%= f.label :画像 %><br/>
-    <!--↓multipleにより複数枚送信-->
-    <%= f.file_field :images, accept: "image/*", multiple: true %>
-    </div>
+        <div class="field">
+          <%= f.label :画像 %><br/>
+          <!--↓multipleにより複数枚送信-->
+          <%= f.file_field :images, accept: "image/*", multiple: true %>
+        </div>
 
-    <div class="field">
-    <%= f.label :人数 %><br/>
-    <%= f.number_field :member, :value =>"1", in: 1..100 %>
-    </div>
+        <div class="field">
+          <%= f.label :人数 %><br/>
+          <%= f.number_field :member, :value =>"1", in: 1..100 %>
+        </div>
 
-    <div class="field">
-    <%= f.label :値段（一人当たり） %><br/>
-    <p><%= f.text_field :price, :value =>"0", autofocus: true, autocomplete: "place" %>円</p>
-    </div>
+        <div class="field">
+          <%= f.label :値段（一人当たり） %><br/>
+          <p><%= f.text_field :price, :value =>"0", autofocus: true, autocomplete: "place" %>円</p>
+        </div>
 
-    <div class="field">
-    <%= f.label :感想 %><br/>
-    <%= f.text_area :body, class: 'form-control', autofocus: true, autocomplete: "body" %>
-    </div>
+        <div class="field">
+          <%= f.label :感想 %><br/>
+          <%= f.text_area :body, class: 'form-control', autofocus: true, autocomplete: "body" %>
+        </div>
     
-    <div>
-    投稿内容の</br>
-    <%= f.label :is_published_flag, "公開", value: true %>
-    <%= f.radio_button :is_published_flag, 'true' %>
-    <%= f.label :is_published_flag, "非公開", value: false %>
-    <%= f.radio_button :is_published_flag,'false' %>
+        <div>
+          投稿内容の</br>
+          <%= f.label :is_published_flag, "公開", value: true %>
+          <%= f.radio_button :is_published_flag, 'true' %>
+          <%= f.label :is_published_flag, "非公開", value: false %>
+          <%= f.radio_button :is_published_flag,'false' %>
+        </div>
+
+          <!--上との間をあけるよう用の</br>-->
+          </br>
+          <%= f.submit "保存" %>
+
+      <% end %>
+
     </div>
-
-    <!--上との間をあけるよう用の</br>-->
-    </br>
-    <%= f.submit "保存" %>
-
-  <% end %>
-
-</div>
-</div>
+  </div>
 </div>
