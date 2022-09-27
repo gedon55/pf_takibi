@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user_id = current_user.id
     if @item.save
-      redirect_to items_path
+      redirect_to items_path(current_user.id)
     else
       @user = current_user
       @items = current_user.items
